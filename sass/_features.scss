@@ -1,0 +1,44 @@
+.features {
+    grid-column: center-start / center-end;
+
+    margin: 15rem 0;
+
+    @supports(display: grid) { //if the browser support
+        display: grid;
+        //grid-template-columns: repeat(3, 1fr); //3 equally size columns
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-gap: 6rem;
+        align-items: start;
+    }
+}
+
+.feature {
+    //IF without CSS GRID
+    float: left;
+    width: 33.33333%;
+    margin-bottom: 6rem;
+
+    @supports(display: grid) {
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    display: grid;
+    //grid-template-columns: min-content 1fr; //min-content is for the icon , 1fr for remaining content
+    //grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); //auto-fit, creates as many tracks as can fit based on the width that we define in the minmax. Each column can have uo to 25rem/250px (25rem ,1fr) 
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon {
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        grid-row: 1 / span 2; //-1 only works in explicit grid
+        transform: translateY(-1rem);
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
+}
